@@ -1,0 +1,118 @@
+* {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.login-form {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/src/assets/login-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.ant-card,
+.ant-card-body,
+.ant-card-actions {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.ant-card-body {
+  border-radius: 8px 8px 0 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 400px;
+  padding: 0 !important;
+}
+
+.ant-card-body .login-form-header {
+  text-align: center;
+  color: white;
+}
+
+.ant-card-body .login-form-header h1 {
+  font-size: 2.8rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.ant-card-body form {
+  width: 100%;
+}
+
+.ant-card-body .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-card-body .form-group input {
+  width: 100%;
+  height: 50px;
+  margin-top: 0.8rem;
+  border: 0;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.277);
+  color: white;
+  padding: 0 0 0 45px;
+  font-size: 1rem;
+  z-index: 2;
+}
+
+::-webkit-input-placeholder {
+  color: white;
+}
+
+.ant-card-body .form-group svg {
+  color: white;
+  font-size: 1rem;
+  position: relative;
+  top: -34px;
+  left: -173px;
+}
+
+.ant-card-actions {
+  flex-direction: column;
+}
+
+.ant-card-actions li {
+  width: 100% !important;
+  border: none !important;
+  margin-bottom: 0 !important;
+}
+
+.ant-card-actions button {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  border-radius: 25px;
+  background-color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ant-card-actions button:hover {
+  box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.ant-card-actions .form-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  color: white;
+}
+
+.ant-card-actions .form-footer a {
+  width: auto !important;
+  color: white !important;
+
+}
