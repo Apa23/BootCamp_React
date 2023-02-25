@@ -100,7 +100,26 @@
   transition: 0.3s;
 }
 
+.ant-card-actions #google-login {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  border-radius: 25px;
+  background-color: rgb(66, 66, 236);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+  color: white;
+}
+
 .ant-card-actions button:hover {
+
+  box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.ant-card-actions #google-login:hover {
+  background-color: white;
+  color: black;
   box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
 }
 

@@ -1,16 +1,31 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faKey } from "@fortawesome/free-solid-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Card } from "antd";
 import { Field, Form, Formik } from "formik";
 import React, { useRef } from "react";
 import "../../styles/loginPage.css";
+import {
+  checkinAutentication,
+  startGoogleSingIn,
+} from "../../store/auth/thunks";
+import { useDispatch } from "react-redux";
 
 export const LoginPage = () => {
   const form = useRef();
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    dispatch(checkinAutentication());
+  };
 
   const formValues = {
     email: "",
     password: "",
+  };
+
+  const onGoogleSignIn = () => {
+    dispatch(startGoogleSingIn());
   };
 
   return (
@@ -21,15 +36,12 @@ export const LoginPage = () => {
             type="submit"
             onClick={() => {
               form.current.submitForm();
-              console.log(
-                "🚀 ~ file: LoginPage.jsx:16 ~ LoginPage ~ form:",
-                form.current.values.email,
-                "-",
-                form.current.values.password
-              );
             }}
           >
             Login
+          </button>,
+          <button onClick={()=>{onGoogleSignIn()}} id="google-login">
+            <FontAwesomeIcon  icon={faGoogle} /> Google
           </button>,
           <div className="form-footer">
             <div id="remember-me-field">
@@ -45,7 +57,11 @@ export const LoginPage = () => {
           <h1>Login</h1>
         </div>
 
-        <Formik innerRef={form} initialValues={formValues} onSubmit={() => {}}>
+        <Formik
+          innerRef={form}
+          initialValues={formValues}
+          onSubmit={handleSubmit}
+        >
           <Form>
             <div className="form-group" id="email-field">
               <Field name="email" type="email" placeholder="Email" />
