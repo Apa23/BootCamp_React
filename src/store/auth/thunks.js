@@ -1,5 +1,5 @@
 import { signInWithGoogle } from "../../firebase/prividers";
-import { checkinCredentials } from "./authSlice";
+import { checkinCredentials, login } from "./authSlice";
 
 export const checkinAutentication = () => async (dispatch) => {
   return async (dispatch) => {
@@ -10,6 +10,8 @@ export const checkinAutentication = () => async (dispatch) => {
 export const startGoogleSingIn = () => {
   return async (dispatch) => {
     dispatch(checkinCredentials());
-    signInWithGoogle()
+    const result = await signInWithGoogle();
+    dispatch(login(result))
+    
   };
 };

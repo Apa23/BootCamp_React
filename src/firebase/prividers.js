@@ -4,14 +4,13 @@ import { firebaseAuth } from "./config";
 
 const googleProvider = new GoogleAuthProvider();
 
-export const signInWithGoogle = async() => {
-    try {
-        const result = await signInWithPopup(firebaseAuth, googleProvider);
-        const credentials = googleProvider.credentialFromResult(result);
-        console.log("🚀 ~ file: prividers.js:11 ~ signInWithGoogle ~ credentials:", credentials)
-        
-    } catch (error) {
-        console.log(error);
-        
-    }
+export const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(firebaseAuth, googleProvider);
+    const { displayName, email, photoURL, uid } = result.user;
+    return { ok: true, displayName, email, photoURL, uid };
+  } catch (error) {
+    const errorMessage = error.message;
+    return { ok: false, errorMessage };
+  }
 };

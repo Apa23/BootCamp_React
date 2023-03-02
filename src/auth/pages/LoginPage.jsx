@@ -9,14 +9,16 @@ import {
   checkinAutentication,
   startGoogleSingIn,
 } from "../../store/auth/thunks";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export const LoginPage = () => {
   const form = useRef();
   const dispatch = useDispatch();
+  const info = useSelector(state => state.auth);
+  console.log("🚀 ~ file: LoginPage.jsx:18 ~ LoginPage ~ info:", info)
 
-  const handleSubmit = () => {
-    dispatch(checkinAutentication());
+  const handleSubmit = async () => {
+    await dispatch(checkinAutentication());
   };
 
   const formValues = {
@@ -24,8 +26,8 @@ export const LoginPage = () => {
     password: "",
   };
 
-  const onGoogleSignIn = () => {
-    dispatch(startGoogleSingIn());
+  const onGoogleSignIn = async () => {
+    await dispatch(startGoogleSingIn());
   };
 
   return (
@@ -40,8 +42,8 @@ export const LoginPage = () => {
           >
             Login
           </button>,
-          <button onClick={()=>{onGoogleSignIn()}} id="google-login">
-            <FontAwesomeIcon  icon={faGoogle} /> Google
+          <button onClick={() => { onGoogleSignIn() }} id="google-login">
+            <FontAwesomeIcon icon={faGoogle} /> Google
           </button>,
           <div className="form-footer">
             <div id="remember-me-field">
