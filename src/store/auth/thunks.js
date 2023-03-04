@@ -1,4 +1,5 @@
-import { signInWithGoogle } from "../../firebase/prividers";
+import { async } from "@firebase/util";
+import { registerUserWithEmailPassword, signInWithGoogle } from "../../firebase/prividers";
 import { checkinCredentials, login } from "./authSlice";
 
 export const checkinAutentication = () => async (dispatch) => {
@@ -15,3 +16,9 @@ export const startGoogleSingIn = () => {
     
   };
 };
+
+export const createUserWithEmailAndPassword = ({email, password, displayName})  => {
+  return async (dispatch) => {
+    const result = await registerUserWithEmailPassword(email, password, displayName);
+  }
+}
