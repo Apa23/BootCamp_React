@@ -1,5 +1,9 @@
 import { async } from "@firebase/util";
-import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import { firebaseAuth } from "./config";
 
 const googleProvider = new GoogleAuthProvider();
@@ -15,14 +19,29 @@ export const signInWithGoogle = async () => {
   }
 };
 
-export const registerUserWithEmailPassword = async ({email, password, displayName}) => {
+export const registerUserWithEmailPassword = async ({
+  email,
+  password,
+  displayName,
+}) => {
   try {
-    const result = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-   
-    
+    const result = await createUserWithEmailAndPassword(
+      firebaseAuth,
+      email,
+      password
+    );
+    const { uid, photoURL } = result.user;
+    return {
+      ok: true,
+      uid,
+      photoURL,
+      email
+    };
   } catch (error) {
-    console.log("🚀 ~ file: prividers.js:22 ~ registerUserWithEmailPassword ~ error:", error); 
-    return { ok: false};
-    
+    console.log(
+      "🚀 ~ file: prividers.js:22 ~ registerUserWithEmailPassword ~ error:",
+      error
+    );
+    return { ok: false };
   }
-}
+};

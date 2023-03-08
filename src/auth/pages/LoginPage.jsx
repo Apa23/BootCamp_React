@@ -3,6 +3,7 @@ import { faUser, faKey, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Card } from "antd";
 import { Field, Form, Formik } from "formik";
+import { object, string, number, date, InferType } from 'yup';
 import React, { useRef } from "react";
 import "../../styles/loginPage.css";
 import {
@@ -23,17 +24,22 @@ export const LoginPage = () => {
   };
 
   const formValues = {
-    email: "",
+    email: "",  
     password: "",
     displayName: "",
   };
+
+  let userSchema = object({
+    displayName: string().required(),
+    email: string().email().required(),
+    password: string().required(),
+  });
 
   const onGoogleSignIn = async () => {
     await dispatch(startGoogleSingIn());
   };
 
   const onGoogleResgister = async () => {
-    
     await dispatch(createUserWithEmailAndPassword(form.current.values));
   };
 
@@ -78,6 +84,7 @@ export const LoginPage = () => {
           innerRef={form}
           initialValues={formValues}
           onSubmit={handleSubmit}
+          
         >
           <Form>
             <div className="form-group" id="name-field">

@@ -18,7 +18,7 @@ export const startGoogleSingIn = () => {
 };
 
 export const createUserWithEmailAndPassword = ({email, password, displayName})  => {
-  return async (dispatch) => {
-    const result = await registerUserWithEmailPassword(email, password, displayName);
+  return async(dispatch) => {
+    const result = await registerUserWithEmailPassword({email, password, displayName});
   }
 }
