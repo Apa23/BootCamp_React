@@ -3,7 +3,7 @@ import { faUser, faKey, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Card } from "antd";
 import { Field, Form, Formik } from "formik";
-import { object, string, number, date, InferType } from 'yup';
+import { object, string} from 'yup';
 import React, { useRef } from "react";
 import "../../styles/loginPage.css";
 import {
@@ -84,7 +84,7 @@ export const LoginPage = () => {
           innerRef={form}
           initialValues={formValues}
           onSubmit={handleSubmit}
-          
+          validationSchema={userSchema}
         >
           <Form>
             <div className="form-group" id="name-field">
